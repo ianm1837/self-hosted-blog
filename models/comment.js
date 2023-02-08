@@ -4,7 +4,7 @@ const sequelize = require('../config/connection.js');
 
 class Comment extends Model {}
 
-Category.init(
+Comment.init(
   {
     id: {
       type: DataTypes.INTEGER,

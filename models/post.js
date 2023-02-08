@@ -4,7 +4,7 @@ const sequelize = require('../config/connection.js');
 
 class Post extends Model {}
 
-Category.init(
+Post.init(
   {
     id: {
       type: DataTypes.INTEGER,
