@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 router.get('/', (req, res) => {
-  res.render('posts');
+  res.json('api route working');
 });
 
 module.exports = router;
