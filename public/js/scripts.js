@@ -5,7 +5,7 @@ const loginFormHandler = async (event) => {
   const password = document.querySelector('#password-login').value.trim();
 
   if (username && password) {
-    const response = await fetch('/api/users/login', {
+    const response = await fetch('/api/user/login', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },
@@ -14,7 +14,9 @@ const loginFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/');
     } else {
-      alert('Failed to log in.');
+      response.json().then((data) => {
+        deliverToast(data.message);
+      });
     }
   }
 };
@@ -25,8 +27,8 @@ const signupFormHandler = async (event) => {
   const username = document.querySelector('#username-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
 
-  if (username && email && password) {
-    const response = await fetch('/api/users', {
+  if (username && password) {
+    const response = await fetch('/api/user/create', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },
@@ -35,13 +37,15 @@ const signupFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/');
     } else {
-      alert('Failed to sign up.');
+      response.json().then((data) => {
+        deliverToast(data.message);
+      });
     }
   }
 };
 
 const logout = async () => {
-  const response = await fetch('/api/users/logout', {
+  const response = await fetch('/api/user/logout', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
   });
@@ -53,15 +57,27 @@ const logout = async () => {
   }
 };
 
-document
-  .querySelector('#logout')
-  .addEventListener('click', logout);
+document.querySelector('#logout').addEventListener('click', logout);
 
+let loginButton = document.querySelector('.login-button') !== null;
+if (loginButton) {
+  document
+    .querySelector('.login-button')
+    .addEventListener('click', loginFormHandler);
+}
 
-document
-  .querySelector('.login-form')
-  .addEventListener('submit', loginFormHandler);
+let signupButton = document.querySelector('.signup-button') !== null;
+if (signupButton) {
+  document
+    .querySelector('.signup-button')
+    .addEventListener('click', signupFormHandler) !== null;
+}
 
-document
-  .querySelector('.signup-form')
-  .addEventListener('submit', signupFormHandler);
+function deliverToast(message) {
+  const toastLiveExample = document.getElementById('error-toast');
+  const toastBody = document.getElementById('toast-body');
+  toastBody.innerText = message;
+  const toast = new bootstrap.Toast(toastLiveExample);
+
+  toast.show();
+}

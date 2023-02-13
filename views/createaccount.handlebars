@@ -2,7 +2,7 @@
   <div class="card m-2 w-50">
     <div class="card-body">
       <h5 class="card-title">Create New User</h5>
-      <form class="signup-form">
+      <form class="">
         <div class="mb-3">
           <label for="username" class="form-label">Username</label>
           <input type="username" class="form-control" id="username-signup" name="username">
@@ -12,11 +12,21 @@
           <input type="password" class="form-control" id="password-signup" name="password">
         </div>
         <div class="d-flex flex-row justify-content-between">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button class="btn btn-primary signup-button">Submit</button>
           <a href="./login">Login</a>
         </div>
       </form>
     </div>
   </div>
+
+  <div id="error-toast" class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive"
+    aria-atomic="true">
+    <div class="d-flex">
+      <div id="toast-body" class="toast-body">
+        Hello, world! This is a toast message.
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+        aria-label="Close"></button>
+    </div>
+  </div>
 </div>
-<script src="./js/scripts.js"></script>
