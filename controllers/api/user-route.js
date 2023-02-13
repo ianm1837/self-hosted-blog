@@ -86,13 +86,12 @@ router.post('/login', async (req, res) => {
 
 // Logout
 router.post('/logout', (req, res) => {
-  console.log(`clicked logout`);
   if (req.session.loggedIn) {
     req.session.destroy(() => {
-      res.status(204).end();
+      res.status(204).json({ message: 'logout success' }).end();
     });
   } else {
-    res.status(404).end();
+    res.status(404).json({ message: "you weren't logged in" }).end();
   }
 });
 
