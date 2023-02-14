@@ -20,6 +20,8 @@ router.post('/create', async (req, res) => {
           });
 
           req.session.save(() => {
+            req.session.username = req.body.username;
+            req.session.user_id = dbNewUserData.dataValues.id;
             req.session.loggedIn = true;
 
             res.status(200).json(dbNewUserData);
@@ -72,6 +74,8 @@ router.post('/login', async (req, res) => {
     }
 
     req.session.save(() => {
+      req.session.username = req.body.username;
+      req.session.user_id = dbUserData.dataValues.id;
       req.session.loggedIn = true;
 
       res
