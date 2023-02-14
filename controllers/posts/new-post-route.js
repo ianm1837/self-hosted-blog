@@ -2,12 +2,15 @@ const router = require('express').Router();
 const { Post } = require('../../models');
 
 router.get('/', (req, res) => {
+  if (!req.session.user_id) {
+    res.redirect('/login');
+    return;
+  }
+
   res.render('new-post');
 });
 
 router.post('/create', (req, res) => {
-  console.log(req.body);
-
   Post.create({
     user_id: req.session.user_id,
     timestamp: req.body.timestamp,
@@ -15,8 +18,7 @@ router.post('/create', (req, res) => {
     content: req.body.content,
   })
     .then((dbPostData) => {
-      res.json(dbPostData);
-      res.status(200).json(req.body);
+      res.json(dbPostData).status(200);
     })
     .catch((err) => {
       console.log(err);
