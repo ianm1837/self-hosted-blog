@@ -3,7 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const expressHandlebars = require('express-handlebars');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-
+const dbInit = require('./config/dbInit');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
 
@@ -35,8 +35,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
+dbInit();
+
 sequelize.sync({ force: false }).then(() => {
-  app.listen(process.env.PORT, () =>
-    console.log(`Now listening on port ${process.env.PORT}`)
+  app.listen(process.env.APP_PORT, () =>
+    console.log(`Now listening on port ${process.env.APP_PORT}`)
   );
 });
