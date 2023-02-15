@@ -1,0 +1,21 @@
+services:
+  node:
+    build: .
+    stdin_open: true
+    tty: true
+    ports:
+      - $APP_PORT:$APP_PORT
+    depends_on:
+      - db
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: $DB_PASSWORD
+      MYSQL_DATABASE: $DB_NAME
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./db_data:/var/lib/mysql
+      - .:/app
+    working_dir: /app
