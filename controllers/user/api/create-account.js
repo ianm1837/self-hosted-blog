@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User } = require('../../..models');
 
 // create new user
 router.post('/create', async (req, res) => {
@@ -45,56 +45,6 @@ router.post('/create', async (req, res) => {
     console.log(err);
     res.status(500).json(err);
     console.log(err);
-  }
-});
-
-// Login
-router.post('/login', async (req, res) => {
-  try {
-    const dbUserData = await User.findOne({
-      where: {
-        username: req.body.username,
-      },
-    });
-
-    if (!dbUserData) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect username or password. Please try again!' });
-      return;
-    }
-
-    const validPassword = await dbUserData.checkPassword(req.body.password);
-
-    if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect username or password. Please try again!' });
-      return;
-    }
-
-    // save user data in session
-    req.session.save(() => {
-      req.session.username = req.body.username;
-      req.session.user_id = dbUserData.dataValues.id;
-      req.session.loggedIn = true;
-
-      res.status(200).redirect('/dashboard');
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
-// Logout
-router.post('/logout', (req, res) => {
-  if (req.session.loggedIn) {
-    req.session.destroy(() => {
-      res.status(204).json({ message: 'Logout success!' }).end();
-    });
-  } else {
-    res.status(404).json({ message: "You weren't logged in..." }).end();
   }
 });
 
