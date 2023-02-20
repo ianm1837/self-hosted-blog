@@ -8,25 +8,33 @@ router.get('/:id', async (req, res) => {
         id: req.params.id,
       },
       include: [
+        { model: User, attributes: ['username'] },
         {
           model: Comment,
-          attributes: ['id', 'content', 'post_id', 'user_id', 'timestamp'],
-          include: {
-            model: User,
-            attributes: ['username'],
-          },
-          include: {
-            model: Post,
-            attributes: ['id', 'title', 'content', 'timestamp', 'user_id'],
-          },
+          attributes: [
+            'id',
+            'content',
+            'username',
+            'post_id',
+            'user_id',
+            'timestamp',
+          ],
         },
       ],
     });
 
     const post = dbPostData.get({ plain: true });
+    const postId = req.params.id;
+    let loggedIn = req.session.loggedIn;
+
+    // res.json(post).status(200);
+
+    console.log(post);
 
     res.render('view-post', {
       post,
+      postId,
+      loggedIn,
     });
   } catch (err) {
     console.log(err);

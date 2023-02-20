@@ -12,7 +12,9 @@ router.get('/', async (req, res) => {
       include: [
         {
           model: User,
-          user_id: req.session.user_id,
+          where: {
+            id: req.session.user_id,
+          },
         },
       ],
     });

@@ -19,6 +19,16 @@ eval("const deliverToast = __webpack_require__(/*! ./make-toast */ \"./src/js/ma
 
 /***/ }),
 
+/***/ "./src/js/create-comment.js":
+/*!**********************************!*\
+  !*** ./src/js/create-comment.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("const deliverToast = __webpack_require__(/*! ./make-toast */ \"./src/js/make-toast.js\");\n\nconst commentFormHandler = async (event) => {\n  event.preventDefault();\n\n  const commentData = document.querySelector('#comment-content').value.trim();\n  const postId = document.querySelector('#post-title').dataset.postNumber;\n\n  if (commentData) {\n    const response = await fetch('/posts/api/create-comment', {\n      method: 'POST',\n      body: JSON.stringify({ commentData, postId }),\n      headers: { 'Content-Type': 'application/json' },\n    });\n\n    if (response.ok) {\n      document.location.reload();\n\n      // console.log('response ok');\n      // return;\n    } else {\n      response.json().then((data) => {\n        deliverToast(data.message);\n      });\n    }\n  }\n};\n\nlet signupButton = document.querySelector('#post-comment-button') !== null;\nif (signupButton) {\n  document\n    .querySelector('#post-comment-button')\n    .addEventListener('click', commentFormHandler) !== null;\n}\n\n\n//# sourceURL=webpack://self-hosted-blog/./src/js/create-comment.js?");
+
+/***/ }),
+
 /***/ "./src/js/create-post.js":
 /*!*******************************!*\
   !*** ./src/js/create-post.js ***!
@@ -35,7 +45,7 @@ eval("const deliverToast = __webpack_require__(/*! ./make-toast */ \"./src/js/ma
   \*************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("__webpack_require__(/*! ./login */ \"./src/js/login.js\");\n__webpack_require__(/*! ./logout */ \"./src/js/logout.js\");\n__webpack_require__(/*! ./create-account */ \"./src/js/create-account.js\");\n__webpack_require__(/*! ./create-post */ \"./src/js/create-post.js\");\n\n\n//# sourceURL=webpack://self-hosted-blog/./src/js/index.js?");
+eval("__webpack_require__(/*! ./login */ \"./src/js/login.js\");\n__webpack_require__(/*! ./logout */ \"./src/js/logout.js\");\n__webpack_require__(/*! ./create-account */ \"./src/js/create-account.js\");\n__webpack_require__(/*! ./create-post */ \"./src/js/create-post.js\");\n__webpack_require__(/*! ./create-comment */ \"./src/js/create-comment.js\");\n\n\n//# sourceURL=webpack://self-hosted-blog/./src/js/index.js?");
 
 /***/ }),
 
