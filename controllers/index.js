@@ -1,17 +1,15 @@
 const router = require('express').Router();
 
-const apiRoutes = require('./api');
-const homeRoute = require('./home-route');
-const dashboardRoutes = require('./dashboard');
 const postsRoutes = require('./posts');
-const loginRoutes = require('./login');
-const createAccountRoutes = require('./create-account');
+const userRoutes = require('./user');
 
-router.use('/', homeRoute);
-router.use('/api', apiRoutes);
-router.use('/dashboard', dashboardRoutes);
-router.use('/posts', postsRoutes);
-router.use('/login', loginRoutes);
-router.use('/createaccount', createAccountRoutes);
+// you are here: /
+
+router.get('/', (req, res) => {
+  res.redirect('/posts');
+});
+
+router.use('/posts', postsRoute);
+router.use('/user', userRoutes);
 
 module.exports = router;
