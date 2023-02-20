@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { User } = require('../../..models');
+const { User } = require('../../../models');
 
 // Logout
-router.post('/logout', (req, res) => {
+router.post('/', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).json({ message: 'Logout success!' }).end();

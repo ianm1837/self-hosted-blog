@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { User } = require('../../..models');
+const { User } = require('../../../models');
 
 // Login
-router.post('/login', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const dbUserData = await User.findOne({
       where: {
@@ -32,7 +32,7 @@ router.post('/login', async (req, res) => {
       req.session.user_id = dbUserData.dataValues.id;
       req.session.loggedIn = true;
 
-      res.status(200).redirect('/dashboard');
+      res.status(200).redirect('/user/dashboard');
     });
   } catch (err) {
     console.log(err);

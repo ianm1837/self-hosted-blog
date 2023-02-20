@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const { Post } = require('../../models');
+const { Post } = require('../../../models');
 
-router.post('/create', (req, res) => {
+router.post('/', (req, res) => {
   Post.create({
     user_id: req.session.user_id,
     timestamp: req.body.timestamp,

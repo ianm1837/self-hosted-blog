@@ -1,1 +1,106 @@
-(()=>{var e={620:(e,t,o)=>{const n=o(854);null!==document.querySelector(".signup-button")&&document.querySelector(".signup-button").addEventListener("click",(async e=>{e.preventDefault();const t=document.querySelector("#username-signup").value.trim(),o=document.querySelector("#password-signup").value.trim();if(t&&o){const e=await fetch("/api/user/create",{method:"POST",body:JSON.stringify({username:t,password:o}),headers:{"Content-Type":"application/json"}});e.ok?document.location.replace("/dashboard"):e.json().then((e=>{n(e.message)}))}}))},481:(e,t,o)=>{const n=o(854);null!==document.querySelector(".new-post-button")&&document.querySelector(".new-post-button").addEventListener("click",(async e=>{e.preventDefault();const t=document.querySelector("#new-post-title").value.trim(),o=document.querySelector("#new-post-content").value.trim(),r=Date.now();if(t&&o){const e=await fetch("/posts/new/create",{method:"POST",body:JSON.stringify({title:t,timestamp:r,content:o}),headers:{"Content-Type":"application/json"}});e.ok?document.location.replace("/dashboard"):e.json().then((e=>{n(e.message)}))}}))},109:(e,t,o)=>{const n=o(854);null!==document.querySelector(".login-button")&&document.querySelector(".login-button").addEventListener("click",(async e=>{e.preventDefault();const t=document.querySelector("#username-login").value.trim(),o=document.querySelector("#password-login").value.trim();if(t&&o){const e=await fetch("/api/user/login",{method:"POST",body:JSON.stringify({username:t,password:o}),headers:{"Content-Type":"application/json"}});e.ok?document.location.replace("/dashboard"):e.json().then((e=>{n(e.message)}))}}))},896:(e,t,o)=>{const n=o(854);document.querySelector("#logout").addEventListener("click",(async()=>{const e=await fetch("/api/user/logout",{method:"POST",headers:{"Content-Type":"application/json"}});e.ok?document.location.replace("/"):e.json().then((e=>{n(e.message)}))}))},854:e=>{e.exports=function(e){const t=document.getElementById("error-toast");document.getElementById("toast-body").innerText=e,new bootstrap.Toast(t).show()}}},t={};function o(n){var r=t[n];if(void 0!==r)return r.exports;var s=t[n]={exports:{}};return e[n](s,s.exports,o),s.exports}o(109),o(896),o(620),o(481)})();
+/*
+ * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/js/create-account.js":
+/*!**********************************!*\
+  !*** ./src/js/create-account.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("const deliverToast = __webpack_require__(/*! ./make-toast */ \"./src/js/make-toast.js\");\n\nconst signupFormHandler = async (event) => {\n  event.preventDefault();\n\n  const username = document.querySelector('#username-signup').value.trim();\n  const password = document.querySelector('#password-signup').value.trim();\n\n  if (username && password) {\n    const response = await fetch('/user/api/create-account', {\n      method: 'POST',\n      body: JSON.stringify({ username, password }),\n      headers: { 'Content-Type': 'application/json' },\n    });\n\n    if (response.ok) {\n      document.location.replace('/user/dashboard');\n    } else {\n      response.json().then((data) => {\n        deliverToast(data.message);\n      });\n    }\n  }\n};\n\nlet signupButton = document.querySelector('.signup-button') !== null;\nif (signupButton) {\n  document\n    .querySelector('.signup-button')\n    .addEventListener('click', signupFormHandler) !== null;\n}\n\n\n//# sourceURL=webpack://self-hosted-blog/./src/js/create-account.js?");
+
+/***/ }),
+
+/***/ "./src/js/create-post.js":
+/*!*******************************!*\
+  !*** ./src/js/create-post.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("const deliverToast = __webpack_require__(/*! ./make-toast */ \"./src/js/make-toast.js\");\n\nconst newPostFormHandler = async (event) => {\n  event.preventDefault();\n\n  const title = document.querySelector('#new-post-title').value.trim();\n  const content = document.querySelector('#new-post-content').value.trim();\n  const timestamp = Date.now();\n\n  if (title && content) {\n    const response = await fetch('/posts/api/create-post', {\n      method: 'POST',\n      body: JSON.stringify({ title, timestamp, content }),\n      headers: { 'Content-Type': 'application/json' },\n    });\n\n    if (response.ok) {\n      document.location.replace('/user/dashboard');\n    } else {\n      response.json().then((data) => {\n        deliverToast(data.message);\n      });\n    }\n  }\n};\n\nlet newPostButton = document.querySelector('.new-post-button') !== null;\nif (newPostButton) {\n  document\n    .querySelector('.new-post-button')\n    .addEventListener('click', newPostFormHandler);\n}\n\n\n//# sourceURL=webpack://self-hosted-blog/./src/js/create-post.js?");
+
+/***/ }),
+
+/***/ "./src/js/index.js":
+/*!*************************!*\
+  !*** ./src/js/index.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("__webpack_require__(/*! ./login */ \"./src/js/login.js\");\n__webpack_require__(/*! ./logout */ \"./src/js/logout.js\");\n__webpack_require__(/*! ./create-account */ \"./src/js/create-account.js\");\n__webpack_require__(/*! ./create-post */ \"./src/js/create-post.js\");\n\n\n//# sourceURL=webpack://self-hosted-blog/./src/js/index.js?");
+
+/***/ }),
+
+/***/ "./src/js/login.js":
+/*!*************************!*\
+  !*** ./src/js/login.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("const deliverToast = __webpack_require__(/*! ./make-toast */ \"./src/js/make-toast.js\");\n\nconst loginFormHandler = async (event) => {\n  event.preventDefault();\n\n  const username = document.querySelector('#username-login').value.trim();\n  const password = document.querySelector('#password-login').value.trim();\n\n  if (username && password) {\n    const response = await fetch('/user/api/login', {\n      method: 'POST',\n      body: JSON.stringify({ username, password }),\n      headers: { 'Content-Type': 'application/json' },\n    });\n\n    if (response.ok) {\n      document.location.replace('/user/dashboard');\n    } else {\n      response.json().then((data) => {\n        deliverToast(data.message);\n      });\n    }\n  }\n};\n\nlet loginButton = document.querySelector('.login-button') !== null;\nif (loginButton) {\n  document\n    .querySelector('.login-button')\n    .addEventListener('click', loginFormHandler);\n}\n\n\n//# sourceURL=webpack://self-hosted-blog/./src/js/login.js?");
+
+/***/ }),
+
+/***/ "./src/js/logout.js":
+/*!**************************!*\
+  !*** ./src/js/logout.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("const deliverToast = __webpack_require__(/*! ./make-toast */ \"./src/js/make-toast.js\");\n\nconst logout = async () => {\n  const response = await fetch('/user/api/logout', {\n    method: 'POST',\n    headers: { 'Content-Type': 'application/json' },\n  });\n\n  if (response.ok) {\n    document.location.replace('/');\n  } else {\n    response.json().then((data) => {\n      deliverToast(data.message);\n    });\n  }\n};\n\ndocument.querySelector('#logout').addEventListener('click', logout);\n\n\n//# sourceURL=webpack://self-hosted-blog/./src/js/logout.js?");
+
+/***/ }),
+
+/***/ "./src/js/make-toast.js":
+/*!******************************!*\
+  !*** ./src/js/make-toast.js ***!
+  \******************************/
+/***/ ((module) => {
+
+eval("function deliverToast(message) {\n  const toastLiveExample = document.getElementById('error-toast');\n  const toastBody = document.getElementById('toast-body');\n  toastBody.innerText = message;\n  const toast = new bootstrap.Toast(toastLiveExample);\n\n  toast.show();\n}\n\nmodule.exports = deliverToast;\n\n\n//# sourceURL=webpack://self-hosted-blog/./src/js/make-toast.js?");
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/js/index.js");
+/******/ 	
+/******/ })()
+;

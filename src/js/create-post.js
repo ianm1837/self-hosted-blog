@@ -8,14 +8,14 @@ const newPostFormHandler = async (event) => {
   const timestamp = Date.now();
 
   if (title && content) {
-    const response = await fetch('/posts/new/create', {
+    const response = await fetch('/posts/api/create-post', {
       method: 'POST',
       body: JSON.stringify({ title, timestamp, content }),
       headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
-      document.location.replace('/dashboard');
+      document.location.replace('/user/dashboard');
     } else {
       response.json().then((data) => {
         deliverToast(data.message);

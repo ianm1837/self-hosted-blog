@@ -1,9 +1,9 @@
 <div class="container d-flex flex-column align-items-center h-100 m-3">
   {{#each posts as |post|}}
   <div class="card mb-3 p-3 w-75">
-    <a href="/posts/{{post.id}}"></a><h5 class="card-title"> {{post.title}} </h5></a>
+    <h5 class="card-title"><a href="/posts/view-post/{{post.id}}">{{post.title}}</a> </h5>
     <h8 class="card-subtitle mb-2 text-muted fw-light border-bottom border-secondary ">@{{post.username}} {{post.timestamp}}</h8> 
     <p class="card-text">{{post.content}}</p>
   </div>
-  {{/ each }}
+  {{/ each }}  
 </div>

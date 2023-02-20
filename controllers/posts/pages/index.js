@@ -1,11 +1,11 @@
 const router = require('express').Router();
 
 const allPostsRoutes = require('./all-posts');
-const newPostRoutes = require('./new-post');
+const viewPostRoutes = require('./view-post');
 
 // you are here: /posts
 
 router.use('/', allPostsRoutes);
-router.use('/new', newPostRoutes);
+router.use('/view-post', viewPostRoutes);
 
 module.exports = router;

@@ -1,7 +1,7 @@
 const deliverToast = require('./make-toast');
 
 const logout = async () => {
-  const response = await fetch('/api/user/logout', {
+  const response = await fetch('/user/api/logout', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
   });

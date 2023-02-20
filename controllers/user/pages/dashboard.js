@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const { Post, User } = require('../../../models');
+const { Post, User } = require('./../../../models');
 
 router.get('/', async (req, res) => {
   if (!req.session.user_id) {
-    res.redirect('/login');
+    res.redirect('/user/login');
     return;
   }
 
