@@ -24,19 +24,27 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/">Home</a>
               </li>
+              {{#if loginStatus}}
               <li class="nav-item">
                 <a class="nav-link" href="/user/dashboard">Dashboard</a>
               </li>
+              {{/if}}
             </ul>
           </div>
             <div>
               <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="/user/login">Login</a>
-                </li>
-                <li class="nav-item">
-                  <a id="logout" class="nav-link" href="#">Logout</a>
-                </li>
+                {{#if loginStatus}}
+                  <li class="nav-item">
+                    <a class="nav-link text-weight-bold">Hi, {{loggedInUser}}!</a>
+                  </li>
+                  <li class="nav-item">
+                    <a id="logout" class="nav-link" href="#">Logout</a>
+                  </li>
+                {{else}}
+                  <li class="nav-item">
+                    <a class="nav-link" href="/user/login">Login</a>
+                  </li>
+                {{/if}}
               </ul>
             </div>
           </ul>

@@ -1,7 +1,10 @@
 const router = require('express').Router();
 
 router.get('/', (req, res) => {
-  res.render('settings');
+  let loginStatus = req.session.loggedIn;
+  let loggedInUser = req.session.username;
+
+  res.render('settings', { loginStatus, loggedInUser });
 });
 
 module.exports = router;

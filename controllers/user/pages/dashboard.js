@@ -19,8 +19,12 @@ router.get('/', async (req, res) => {
       ],
     });
 
+    let loginStatus = req.session.loggedIn;
+    let loggedInUser = req.session.username;
+
     let posts = dbDashboardData.map((posts) => ({
       title: posts.title,
+      id: posts.id,
       content: posts.content,
       timestamp: posts.timestamp,
       user_id: posts.user_id,
@@ -28,6 +32,8 @@ router.get('/', async (req, res) => {
 
     res.render('dashboard', {
       posts,
+      loginStatus,
+      loggedInUser,
     });
   } catch (err) {
     console.log(err);

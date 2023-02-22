@@ -25,7 +25,8 @@ router.get('/:id', async (req, res) => {
 
     const post = dbPostData.get({ plain: true });
     const postId = req.params.id;
-    let loggedIn = req.session.loggedIn;
+    let loginStatus = req.session.loggedIn;
+    let loggedInUser = req.session.username;
 
     // res.json(post).status(200);
 
@@ -34,7 +35,8 @@ router.get('/:id', async (req, res) => {
     res.render('view-post', {
       post,
       postId,
-      loggedIn,
+      loginStatus,
+      loggedInUser,
     });
   } catch (err) {
     console.log(err);

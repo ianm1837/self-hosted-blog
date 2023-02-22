@@ -20,9 +20,14 @@ router.get('/', async (req, res) => {
       username: posts.user.username,
     }));
 
+    let loginStatus = req.session.loggedIn;
+    let loggedInUser = req.session.username;
+
     console.log('list of user posts: ' + JSON.stringify(posts));
     res.render('all-posts', {
       posts,
+      loginStatus,
+      loggedInUser,
     });
   } catch (err) {
     console.log(err);

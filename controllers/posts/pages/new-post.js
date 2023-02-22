@@ -5,8 +5,11 @@ router.get('/', (req, res) => {
     res.redirect('/user/login');
     return;
   }
-  
-  res.render('new-post');
+
+  let loginStatus = req.session.loggedIn;
+  let loggedInUser = req.session.username;
+
+  res.render('new-post', { loginStatus, loggedInUser });
 });
 
 module.exports = router;
