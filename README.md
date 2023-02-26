@@ -30,6 +30,7 @@ Steps:
 - Clone Repo
 - Copy .env.EXAMPLE to .env
 - Fill out environment variables
+- create ```db_data``` folder in root of app
 - run: ```npm run docker-prod-up```
 
 ### Locally
