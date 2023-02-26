@@ -8,6 +8,9 @@ A full stack blog application with user authentication.
 
 ![Brave Browser - 2023-02-26 - 000006](https://user-images.githubusercontent.com/65581204/221436587-7dd9c540-9c7f-4683-88ed-b7c18b68de5e.png)
 
+Link to live example:
+https://blog.ianm1837.com
+
 ## Table of Contents
 
 - [self-hosted-blog](#self-hosted-blog)
