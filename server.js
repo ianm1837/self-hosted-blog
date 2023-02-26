@@ -6,6 +6,9 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const dbInit = require('./config/dbInit');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
+const Handlebars = require('handlebars')
+const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
+
 
 const app = express();
 
@@ -34,6 +37,7 @@ const hbs = expressHandlebars.create({
   helpers: {
     respectNewLine,
   },
+  handlebars: allowInsecurePrototypeAccess(Handlebars)
 });
 
 app.engine('handlebars', hbs.engine);

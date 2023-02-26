@@ -23,22 +23,28 @@ router.get('/:id', async (req, res) => {
         },
       ],
     });
+
+     console.log("🚀 dbPostData: " + JSON.stringify(dbPostData))
+
+    const { title: postTitle, content: postContent, user: postUser, timestamp: postTimestamp, comments: postComments } = dbPostData
     
     const post = {
-      title: dbPostData.title,
-      content: dbPostData.content,
-      username: dbPostData.user.username,
-      timestamp: moment(dbPostData.updatedAt).format('lll'),
-      comments: dbPostData.comments
+      title: postTitle,
+      content: postContent,
+      username: postUser,
+      timestamp: moment(postTimestamp).format('lll'),
+      comments: postComments
     }
 
     const postId = req.params.id;
     let loginStatus = req.session.loggedIn;
     let loggedInUser = req.session.username;
+    let test = 'test'
 
     res.render('view-post', {
       post,
       postId,
+      test,
       loginStatus,
       loggedInUser,
     });
