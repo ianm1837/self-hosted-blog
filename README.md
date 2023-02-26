@@ -6,6 +6,8 @@
 
 A full stack blog application with user authentication.
 
+![Brave Browser - 2023-02-26 - 000006](https://user-images.githubusercontent.com/65581204/221436587-7dd9c540-9c7f-4683-88ed-b7c18b68de5e.png)
+
 ## Table of Contents
 
 - [self-hosted-blog](#self-hosted-blog)
@@ -14,7 +16,6 @@ A full stack blog application with user authentication.
   - [Installation](#installation)
     - [Docker Compose](#docker-compose)
     - [Locally](#locally)
-  - [Usage](#usage)
   - [License](#license)
   - [Contributing](#contributing)
   - [Questions](#questions)
@@ -47,9 +48,6 @@ Steps:
 - run: ```npm run start```
 
 
-## Usage
-
-
 
 ## License
 
@@ -62,7 +60,7 @@ No Contributions.
 
 ## Questions
 
-For questions please email: 
+For questions please open and issue on this repo
 
-Visit my github: [](https://www.github.com/)
+Visit my github: [ianm1837](https://www.github.com/ianm1837)
 
