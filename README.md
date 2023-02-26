@@ -12,6 +12,8 @@ A full stack blog application with user authentication.
   - [Description](#description)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
+    - [Docker Compose](#docker-compose)
+    - [Locally](#locally)
   - [Usage](#usage)
   - [License](#license)
   - [Contributing](#contributing)
@@ -19,6 +21,29 @@ A full stack blog application with user authentication.
 
 ## Installation
 
+### Docker Compose
+Requirements:
+- Docker Engine
+- Docker Compose
+
+Steps:
+- Clone Repo
+- Copy .env.EXAMPLE to .env
+- Fill out environment variables
+- run: ```npm run docker-prod-up```
+
+### Locally
+
+Requirements:
+- node js
+- MySQL Server
+
+Steps:
+- Clone Repo
+- Copy .env.EXAMPLE to .env
+- Fill out environment variables
+- run: ```npm install```
+- run: ```npm run start```
 
 
 ## Usage

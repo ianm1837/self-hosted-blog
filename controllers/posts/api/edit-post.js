@@ -1,13 +1,19 @@
 const router = require('express').Router();
 const { Post } = require('../../../models');
 
-router.delete('/:id', (req, res) => {
+router.patch('/:id', (req, res) => {
   try {
-    Post.destroy({
-      where: {
-        id: req.params.id,
+    Post.update(
+      {
+        title: req.body.title,
+        content: req.body.content,
       },
-    })
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    )
       .then((dbPostData) => {
         res.json(dbPostData).status(200);
       })

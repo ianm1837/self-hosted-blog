@@ -1,32 +1,40 @@
-// let deletePostID = null;
+let deletePostID = null;
 
-// function deletePost(event) {
-//   // deletePostID = event.target.id;
-//   console.log(event.target.id);
-// }
+function cancelDeletePost() {
+  deletePostID = null;
+}
 
-// function cancelDeletePost() {
-//   deletePostID = null;
-//   console.log(deletePostID);
-// }
+function confirmDeletePost() {
+  fetch(`/posts/api/delete-post/${deletePostID}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ post_id: deletePostID }),
+  })
+    .then(() => {
+      deletePostID = null;
+      document.location.replace('/user/dashboard');
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
-// function confirmDeletePost() {
-//   fetch(`/api/posts/${deletePostID}`, {
-//     method: 'DELETE',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//   }).then(() => {
-//     document.location.replace('/dashboard');
-//   });
-// }
-
-let deletePostButton =
-  document.querySelectorAll('.delete-post-button') !== null;
+let deletePostButton = document.querySelectorAll('.delete-post-button');
 if (deletePostButton) {
+  // Add a click event listener to each delete button
   deletePostButton.forEach(function (button) {
     button.addEventListener('click', function () {
-      console.log('Delete button clicked: ' + this);
+      deletePostID = this.id;
     });
   });
+}
+
+let confirmDeletePostButton = document.querySelector('#confirm-delete-post');
+if (confirmDeletePostButton) {
+  confirmDeletePostButton.addEventListener('click', confirmDeletePost);
+}
+
+let cancelDeletePostButton = document.querySelector('#cancel-delete-post');
+if (cancelDeletePostButton) {
+  cancelDeletePostButton.addEventListener('click', cancelDeletePost);
 }

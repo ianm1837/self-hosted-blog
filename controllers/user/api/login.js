@@ -10,6 +10,7 @@ router.post('/', async (req, res) => {
       },
     });
 
+    
     if (!dbUserData) {
       res
         .status(400)

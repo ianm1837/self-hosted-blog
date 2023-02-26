@@ -26,7 +26,17 @@ const sessionInfo = {
 
 app.use(session(sessionInfo));
 
-app.engine('handlebars', expressHandlebars());
+function respectNewLine(text) {
+  return text.replace(/(\r\n|\n|\r)/gm, '<br>');
+}
+
+const hbs = expressHandlebars.create({
+  helpers: {
+    respectNewLine,
+  },
+});
+
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
