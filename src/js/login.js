@@ -3,6 +3,8 @@ const deliverToast = require('./make-toast');
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
+
+
   const username = document.querySelector('#username-login').value.trim();
   const password = document.querySelector('#password-login').value.trim();
 
@@ -23,9 +25,7 @@ const loginFormHandler = async (event) => {
   }
 };
 
-let loginButton = document.querySelector('.login-button') !== null;
-if (loginButton) {
-  document
-    .querySelector('.login-button')
-    .addEventListener('click', loginFormHandler);
+let loginForm = document.getElementById('login-form')
+if (loginForm) {
+    loginForm.addEventListener('submit', loginFormHandler);
 }

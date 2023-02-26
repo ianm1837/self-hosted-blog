@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "docker-compose -f docker-compose-dev.yml up -d && npm-run-all -p nodemon webpack-watch && docker-compose -f docker-compose-dev.yml down",
-    "docker-dev-up": "docker-compose -f docker-compose-dev.yml up -d",
-    "docker-dev-down": "docker-compose -f docker-compose-dev.yml down",
-    "docker-prod-up": "docker-compose down && docker-compose up -d --force-recreate --build",
-    "docker-prod-down": "docker-compose down",
+    "dev": "docker compose -f docker-compose-dev.yml up -d && npm-run-all -p nodemon webpack-watch && docker compose -f docker-compose-dev.yml down",
+    "docker-dev-up": "docker compose -f docker-compose-dev.yml up -d",
+    "docker-dev-down": "docker compose -f docker-compose-dev.yml down",
+    "docker-prod-up": "docker compose down && docker compose up -d --force-recreate --build",
+    "docker-prod-down": "docker compose down",
     "webpack-watch": "webpack --watch",
     "nodemon": "nodemon server.js",
     "build": "webpack"
@@ -32,6 +32,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
     "express-session": "^1.17.3",
+    "moment": "^2.29.4",
     "mysql2": "^3.1.2",
     "sequelize": "^6.28.0"
   },

@@ -15,9 +15,6 @@ const commentFormHandler = async (event) => {
 
     if (response.ok) {
       document.location.reload();
-
-      // console.log('response ok');
-      // return;
     } else {
       response.json().then((data) => {
         deliverToast(data.message);

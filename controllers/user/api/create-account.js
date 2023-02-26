@@ -3,6 +3,7 @@ const { User } = require('../../../models');
 
 // create new user
 router.post('/', async (req, res) => {
+  
   try {
     const dbFindUserData = await User.findOne({
       where: {

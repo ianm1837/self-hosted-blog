@@ -2,21 +2,24 @@
   <div class="card mb-3 p-3 w-75">
     {{!-- <a href="/posts/view-post/{{post.id}}"></a> --}}
     <h5 id="post-title" data-post-number="{{postId}}" class="card-title"> {{post.title}} </h5></a>
-    <h8 class="card-subtitle mb-2 text-muted fw-light border-bottom border-secondary ">@{{post.user.username}}
-      {{post.timestamp}}</h8>
-    <p class="card-text">{{post.content}}</p>
+    <h8 class="card-subtitle mb-2 text-muted fw-light border-bottom border-secondary ">
+      {{post.timestamp}}
+      <br>
+      @{{post.username}}
+    </h8>
+    <p class="card-text">{{{respectNewLine post.content}}}</p>
   </div>
 
   <div class="w-75 d-flex flex-column align-items-center">
-  {{#each post.comments as |comment|}}
+    {{#each post.comments as |comment|}}
     <div class="card mb-3 ml-3 mr-3 p-3 w-75">
       <h8 class="card-subtitle mb-2 text-muted fw-light border-bottom border-secondary ">@{{comment.username}}
         {{comment.timestamp}}</h8>
-      <p id="db-comment-content-{{comment.id}}" class="card-text">{{comment.content}}</p>
+      <p id="db-comment-content-{{comment.id}}" class="card-text">{{{respectNewLine comment.content}}}</p>
     </div>
-  {{/ each }}
+    {{/ each }}
 
-  {{#if loginStatus}}
+    {{#if loginStatus}}
     <div class="card mb-3 p-3 w-75">
       <h5 class="card-title">Add a comment</h5>
       <form>
@@ -27,6 +30,6 @@
         <button id="post-comment-button" type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
-  {{/if}}
+    {{/if}}
   </div>
 </div>

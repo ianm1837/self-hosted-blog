@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
       req.session.user_id = dbUserData.dataValues.id;
       req.session.loggedIn = true;
 
-      res.status(200).redirect('/user/dashboard');
+      res.status(200).json({ message: "success" });
     });
   } catch (err) {
     console.log(err);

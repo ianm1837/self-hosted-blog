@@ -2,3 +2,6 @@ acceptance criteria.md
 .vscode
 db_data
 14-mvc-homework-demo-01.gif
+node_modules
+.env
+package-lock.json

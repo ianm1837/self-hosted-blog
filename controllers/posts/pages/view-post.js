@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const moment = require('moment')
 const { Post, Comment, User } = require('../../../models');
 
 router.get('/:id', async (req, res) => {
@@ -22,15 +23,18 @@ router.get('/:id', async (req, res) => {
         },
       ],
     });
+    
+    const post = {
+      title: dbPostData.title,
+      content: dbPostData.content,
+      username: dbPostData.user.username,
+      timestamp: moment(dbPostData.updatedAt).format('lll'),
+      comments: dbPostData.comments
+    }
 
-    const post = dbPostData.get({ plain: true });
     const postId = req.params.id;
     let loginStatus = req.session.loggedIn;
     let loggedInUser = req.session.username;
-
-    // res.json(post).status(200);
-
-    console.log(post);
 
     res.render('view-post', {
       post,

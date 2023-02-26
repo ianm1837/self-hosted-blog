@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const moment = require('moment')
 const { Post, User } = require('../../../models');
 
 router.get('/', async (req, res) => {
@@ -15,7 +16,7 @@ router.get('/', async (req, res) => {
       title: posts.title,
       id: posts.id,
       content: posts.content,
-      timestamp: posts.timestamp,
+      timestamp: moment(posts.updatedAt).format('lll'),
       user_id: posts.user_id,
       username: posts.user.username,
     }));
@@ -23,7 +24,6 @@ router.get('/', async (req, res) => {
     let loginStatus = req.session.loggedIn;
     let loggedInUser = req.session.username;
 
-    console.log('list of user posts: ' + JSON.stringify(posts));
     res.render('all-posts', {
       posts,
       loginStatus,
